@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelon Nyanguno - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+        
+        nav {
+            background: #2c5f2d;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: #1e4620;
+        }
+        
+        section {
+            padding: 50px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        section h2 {
+            color: #2c5f2d;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #97bc62;
+            display: inline-block;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .profile-info p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .skill-category {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #97bc62;
+        }
+        
+        .skill-category h3 {
+            color: #2c5f2d;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #97bc62;
+            font-weight: bold;
+        }
+        
+        .project-card {
+            background: #f9f9f9;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #2c5f2d;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h3 {
+            color: #2c5f2d;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .project-tags {
+            margin-top: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #97bc62;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-top: 5px;
+        }
+        
+        .experience-item {
+            margin-bottom: 35px;
+            padding-left: 25px;
+            border-left: 3px solid #97bc62;
+        }
+        
+        .experience-item h3 {
+            color: #2c5f2d;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .experience-meta {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .experience-item ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .experience-item li {
+            margin-bottom: 10px;
+        }
+        
+        .education-box {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8a4e 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .education-box h3 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+        
+        .education-box p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #97bc62;
+        }
+        
+        .contact-card h3 {
+            color: #2c5f2d;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #2c5f2d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+        }
+        
+        .highlight-box {
+            background: #fffbf0;
+            border-left: 5px solid #f0ad4e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .highlight-box h4 {
+            color: #d08c2e;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KELON NYANGUNO</h1>
+            <p>Energy and Environmental Technologist</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="profile-info">
+                    <p>I am a resourceful and results-driven Energy and Environmental Technology graduate with hands-on experience in designing, installing, and managing solar energy systems. My expertise spans conducting Environmental Impact Assessments (EIA), analyzing energy consumption, and supporting sustainable development initiatives.</p>
+                    <p>With practical field experience from multiple renewable energy installations across Kenya, I bring a unique combination of technical knowledge and real-world problem-solving abilities to environmental and water resources projects.</p>
+                </div>
+                <div class="profile-info">
+                    <p>I am passionate about sustainable solutions and have demonstrated my commitment through my final year research project on thermal energy storage and my internship work with hybrid energy systems.</p>
+                    <p>I thrive in dynamic field environments and excel at collaborating with multidisciplinary teams to deliver practical renewable energy solutions that make a real difference in communities.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills & Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Renewable Energy Systems</h3>
+                    <ul>
+                        <li>Solar PV System Design & Sizing</li>
+                        <li>Solar Installation & Commissioning</li>
+                        <li>Solar Water Pumping Systems</li>
+                        <li>Hybrid Energy Systems</li>
+                        <li>System Performance Monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Environmental Assessment</h3>
+                    <ul>
+                        <li>Environmental Impact Assessment (EIA)</li>
+                        <li>Site Assessment & Analysis</li>
+                        <li>Energy Auditing</li>
+                        <li>Load Analysis</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technical Analysis</h3>
+                    <ul>
+                        <li>Data Collection & Management</li>
+                        <li>Energy Consumption Analysis</li>
+                        <li>Performance Evaluation</li>
+                        <li>System Optimization</li>
+                        <li>Technical Documentation</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Professional Competencies</h3>
+                    <ul>
+                        <li>Field Work & Site Surveys</li>
+                        <li>Project Coordination</li>
+                        <li>Team Collaboration</li>
+                        <li>Problem-solving</li>
+                        <li>Technical Reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Key Projects</h2>
+            
+            <div class="project-card">
+                <h3>Thermal Energy Storage Using Sand</h3>
+                <p class="project-meta">Final Year Research Project | JKUAT | 2024-2025</p>
+                <p><strong>Objective:</strong> To assess sand's potential as a low-cost, sustainable thermal energy storage medium for solar thermal systems.</p>
+                <p><strong>Key Activities:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Conducted comprehensive literature review on thermal energy storage materials</li>
+                    <li>Designed and conducted experiments to evaluate sand's heat retention properties</li>
+                    <li>Analyzed thermal conductivity and heat capacity data</li>
+                    <li>Evaluated cost-effectiveness and sustainability compared to conventional storage materials</li>
+                    <li>Prepared detailed technical report with findings and recommendations</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Outcomes:</strong> Successfully demonstrated sand as a viable, low-cost alternative for thermal energy storage in solar applications, particularly suitable for rural and resource-constrained settings.</p>
+                <div class="project-tags">
+                    <span class="tag">Research</span>
+                    <span class="tag">Thermal Energy</span>
+                    <span class="tag">Solar Systems</span>
+                    <span class="tag">Sustainability</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Multi-Site Solar PV Installation Projects</h3>
+                <p class="project-meta">Hybrid Energy Systems Ltd. | May-August 2024</p>
+                <p><strong>Project Locations:</strong> Murang'a, Limuru, Nyeri, and Imara Daima</p>
+                <p><strong>Scope:</strong> Design, sizing, and installation of solar PV systems for residential and community applications.</p>
+                <p><strong>Key Contributions:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Conducted comprehensive site assessments to evaluate solar potential and installation requirements</li>
+                    <li>Performed load analysis to determine optimal system sizing</li>
+                    <li>Assisted in system design including panel configuration, inverter selection, and battery storage</li>
+                    <li>Participated in physical installation of solar panels, mounting structures, and electrical components</li>
+                    <li>Conducted performance testing and system commissioning</li>
+                    <li>Provided client training on system operation and maintenance</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Impact:</strong> Successfully contributed to the installation of multiple solar systems, providing clean, reliable electricity to residential homes and community facilities across four regions.</p>
+                <div class="project-tags">
+                    <span class="tag">Solar PV</span>
+                    <span class="tag">Field Work</span>
+                    <span class="tag">Installation</span>
+                    <span class="tag">System Design</span>
+                    <span class="tag">Community Impact</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Rural Solar Water Pumping Systems</h3>
+                <p class="project-meta">Hybrid Energy Systems Ltd. | 2024</p>
+                <p><strong>Objective:</strong> Increase access to clean water in rural areas through renewable energy-powered pumping systems.</p>
+                <p><strong>Key Responsibilities:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Assessed water requirements and pumping specifications for rural communities</li>
+                    <li>Calculated total dynamic head and flow rate requirements</li>
+                    <li>Sized solar arrays to meet pumping system power demands</li>
+                    <li>Assisted in installation of solar panels, pump controllers, and water storage systems</li>
+                    <li>Monitored system performance and optimized efficiency</li>
+                    <li>Documented installation procedures and maintenance protocols</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Outcomes:</strong> Enabled sustainable water access for rural communities, reducing reliance on diesel generators and improving water security through clean energy solutions.</p>
+                <div class="project-tags">
+                    <span class="tag">Water Resources</span>
+                    <span class="tag">Solar Pumping</span>
+                    <span class="tag">Rural Development</span>
+                    <span class="tag">Renewable Energy</span>
+                    <span class="tag">Community Service</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Energy and Environmental Intern</h3>
+                <p class="experience-meta">Hybrid Energy Systems Ltd. | Nairobi, Kenya | May 2024 - August 2024</p>
+                <p>Gained comprehensive hands-on experience in renewable energy system implementation and environmental assessment.</p>
+                <ul>
+                    <li>Participated in the design, sizing, and installation of solar PV systems for residential and community use across multiple locations including Murang'a, Limuru, Nyeri, and Imara Daima</li>
+                    <li>Assisted in solar water pumping system setup in rural areas, contributing to increased access to clean water through renewable energy</li>
+                    <li>Conducted site assessments to evaluate solar resource potential, structural requirements, and shading analysis</li>
+                    <li>Performed detailed load analysis to determine system sizing and component selection</li>
+                    <li>Monitored system performance and implemented optimization strategies to enhance efficiency and reliability</li>
+                    <li>Prepared technical documentation including site survey reports, installation procedures, and maintenance guidelines</li>
+                    <li>Collaborated with engineering team, contractors, and clients to ensure successful project delivery</li>
+                    <li>Gained practical experience with solar equipment including PV modules, inverters, charge controllers, and battery systems</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h4>Key Achievement</h4>
+                    <p>Successfully contributed to multiple solar installations that now provide clean, reliable electricity to homes and communities, demonstrating practical application of renewable energy technology to address real-world energy access challenges.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education & Qualifications</h2>
+            
+            <div class="education-box">
+                <h3>Bachelor of Science in Energy and Environmental Technology</h3>
+                <p>Jomo Kenyatta University of Agriculture and Technology (JKUAT)</p>
+                <p><strong>Classification:</strong> Second Class Honours (Upper Division)</p>
+                <p><strong>Graduation:</strong> Expected November 2025 (Examinations completed May 2025)</p>
+            </div>
+            
+            <div style="background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 20px;">
+                <h3 style="color: #2c5f2d; margin-bottom: 15px;">Relevant Coursework</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <ul style="list-style-position: inside;">
+                        <li>Renewable Energy Systems</li>
+                        <li>Environmental Impact Assessment</li>
+                        <li>Energy Auditing & Management</li>
+                        <li>Solar Energy Technology</li>
+                    </ul>
+                    <ul style="list-style-position: inside;">
+                        <li>Water Resources Management</li>
+                        <li>Environmental Engineering</li>
+                        <li>Energy Economics</li>
+                        <li>Sustainable Development</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p>Available upon request</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Location</h3>
+                    <p>Nairobi, Kenya</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Availability</h3>
+                    <p>Immediately available for internship opportunities</p>
+                </div>
+            </div>
+            
+            <div style="background: #fffbf0; border: 2px solid #97bc62; padding: 25px; border-radius: 8px; margin-top: 30px; text-align: center;">
+                <h3 style="color: #2c5f2d; margin-bottom: 10px;">Ready to Contribute</h3>
+                <p>I am eager to apply my technical skills and field experience to environmental and water resources engineering projects. My hands-on experience with renewable energy systems, combined with strong analytical abilities and passion for sustainable solutions, positions me to make meaningful contributions to your team.</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Kelon Nyanguno | Energy and Environmental Technologist</p>
+            <p style="margin-top: 10px; opacity: 0.9;">Committed to sustainable solutions and environmental stewardship</p>
+        </footer>
+    </div>
+</body>
+</html>
